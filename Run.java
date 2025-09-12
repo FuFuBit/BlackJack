@@ -5,8 +5,6 @@ public class Run {
         for(Card card : deck.getCards())
         {
             System.out.println(card);
-
-            
         }
     }
 }

@@ -16,7 +16,7 @@ public class Player
     }
 
     public void playTurn(Deck deck)
-    {
+    { 
         Scanner input = new Scanner(System.in);
         Set<String> hitOptions = Set.of("h", "hit");
         Set<String> stayOptions = Set.of("s", "stay");
@@ -29,6 +29,10 @@ public class Player
             if (hitOptions.contains(action)) 
             {
                 hit(deck);
+                if(hasBusted());
+                {
+                    break;
+                }
             } 
             else if (stayOptions.contains(action)) 
             {
@@ -46,6 +50,18 @@ public class Player
         hand.add(deck.getTopCard());
     }
 
+    public boolean hasBusted()
+    {
+        if(getHandValue() > 21)
+        {
+            System.out.println(this.name + " has BUSTED. ");
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
     public int getHandValue()
     {
         int handValue = 0;
@@ -97,7 +113,8 @@ public class Player
                     else
                     {
                         System.out.println("Your bet is: " + betAmount);
-                        break;
+                        this.money -= betAmount;
+                        this.bet = betAmount;
                     }
                 }
 
@@ -107,12 +124,16 @@ public class Player
                     input.next();
                 }
             }
-
-        input.close();
     }
 
     public void getCard(Deck deck)
     {
         //do stuff
+    }
+
+    @Override
+    public String toString() 
+    {
+        return name + " ($" + money + ")";
     }
 }

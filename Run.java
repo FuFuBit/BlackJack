@@ -4,9 +4,9 @@ import java.util.Scanner;
 public class Run {
     public static void main(String[] args) {
         Deck deck = new Deck();
-        Player player = new Player("Johnny", 100);
         Scanner input = new Scanner(System.in);
-        Integer playerCount = 0;
+
+        int playerCount = 0;
 
         while (true) 
         {
@@ -76,38 +76,43 @@ public class Run {
             playerList.add(new Player(playerName, playerMoney));
         }
 
-        System.out.println("\n" + playerList);
+        // System.out.println("\n" + playerList);
 
-        System.out.println("\nWhich character would you like to be? ");
-        for(int i = 0; i < playerList.size(); i++)
-        {
-            System.out.println("\n" + (i + 1) + ". " + playerList.get(i));
-        }
+        // System.out.println("\nWhich character would you like to be? ");
+        // for(int i = 0; i < playerList.size(); i++)
+        // {
+        //     System.out.println("\n" + (i + 1) + ". " + playerList.get(i));
+        // }
 
-        int playerCharacter = 0;
-        while (true) {
-            System.out.print("\nEnter the number corresponding to your character: ");
-            if (input.hasNextInt()) 
-            {
-                playerCharacter = input.nextInt() - 1;
-                input.nextLine();
+        // int playerCharacter = 0;
+        // while (true) {
+        //     System.out.print("\nEnter the number corresponding to your character: ");
+        //     if (input.hasNextInt()) 
+        //     {
+        //         playerCharacter = input.nextInt() - 1;
+        //         input.nextLine();
 
-                if (playerCharacter >= 0 && playerCharacter < playerList.size()) 
-                {
-                    break;
-                } 
-                else 
-                {
-                    System.out.println("Invalid choice. Please choose a number between  and " + (playerList.size() - 1) + ".");
-                }
-            } 
-            else 
-            {
-                System.out.println("Invalid input. Please enter a number.");
-                input.nextLine();
-            }
-        }
+        //         if (playerCharacter >= 0 && playerCharacter < playerList.size()) 
+        //         {
+        //             break;
+        //         } 
+        //         else 
+        //         {
+        //             System.out.println("Invalid choice. Please choose a number between  and " + (playerList.size() - 1) + ".");
+        //         }
+        //     } 
+        //     else 
+        //     {
+        //         System.out.println("Invalid input. Please enter a number.");
+        //         input.nextLine();
+        //     }
+        // }
 
-        System.out.println("You chose: " + playerList.get(playerCharacter));
+        // System.out.println("You chose: " + playerList.get(playerCharacter));
+        System.out.println("");
+        Utils.loopingEllipsisWithMessage("The game is now starting", 4,400);
+
+        playerList.get(0).hit(deck);
     }
+    
 }

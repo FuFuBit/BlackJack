@@ -17,6 +17,7 @@ public class Player
 
     public void playTurn(Deck deck)
     { 
+        System.out.println("\nIt is now " + this.name + "'s turn.\n");
         Scanner input = new Scanner(System.in);
         Set<String> hitOptions = Set.of("h", "hit");
         Set<String> stayOptions = Set.of("s", "stay");
@@ -48,6 +49,14 @@ public class Player
     public void hit(Deck deck)
     {
         hand.add(deck.getTopCard());
+        System.out.println(this.name + " drew a " + hand.get(hand.size()-1));
+    }
+
+    public void dealHand(Deck deck)
+    {
+        this.hand = new ArrayList<Card>();
+        this.hit(deck);
+        this.hit(deck);
     }
 
     public boolean hasBusted()
@@ -112,7 +121,7 @@ public class Player
                     }
                     else
                     {
-                        System.out.println("Your bet is: " + betAmount);
+                        System.out.println(this.name + "'s' bet is: " + betAmount);
                         this.money -= betAmount;
                         this.bet = betAmount;
                     }

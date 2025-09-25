@@ -13,7 +13,7 @@ public class Card
 
     public String toString()
     {
-        return this.face + " of " + this.suit + "(" + this.value + ")";
+        return this.face + " of " + this.suit + " (" + this.value + ")";
     }
 
     public String getFace()
